@@ -44,8 +44,9 @@ resource "docker_container" "flask_container" {
   command = [
     "sh",
     "-c",
-    "pip install --no-cache-dir -r /app/requirements.txt && python /app/run.py"
+    "pip install --no-cache-dir -r /app/requirements.txt && python -m app.run"
   ]
+
 
 
   restart = "on-failure"
