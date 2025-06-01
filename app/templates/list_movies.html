@@ -1,0 +1,22 @@
+<!-- app/templates/list_movies.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1 class="mb-4">Lista de Filmes Favoritos</h1>
+    {% if movies %}
+      <ul class="list-group">
+        {% for movie in movies %}
+          <li class="list-group-item mb-2">
+            <h5 class="mb-1">{{ movie.title }}</h5>
+            <p class="mb-0">{{ movie.description }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-muted">Nenhum filme cadastrado ainda.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
