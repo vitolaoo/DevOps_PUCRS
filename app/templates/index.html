@@ -1,0 +1,44 @@
+<!-- app/templates/index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1 class="mb-4">Cadastrar Filme</h1>
+    <form action="{{ url_for('main.add_movie') }}" method="post" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="title" class="form-label">Título do Filme</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Ex.: Matrix" required>
+        <div class="invalid-feedback">
+          Informe o título do filme.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Descrição / Opinião</label>
+        <textarea class="form-control" id="description" name="description" rows="3" placeholder="O que achou do filme?" required></textarea>
+        <div class="invalid-feedback">
+          Informe uma breve descrição ou opinião.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// Script simples para habilitar validação do Bootstrap
+(() => {
+  'use strict';
+  const forms = document.querySelectorAll('.needs-validation');
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+})();
+</script>
+{% endblock %}
