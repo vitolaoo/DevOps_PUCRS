@@ -4,6 +4,13 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+logger.info("Aplicação Flask iniciada.")
+
+
 def create_app(config_object=None):
     app = Flask(__name__)
     # Configuração básica: banco SQLite em arquivo local "movies.db"
